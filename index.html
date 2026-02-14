@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- viewport-fit=cover ensures the background fills the area behind the Dynamic Island -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>For My Valentine</title>
+    
+    <!-- Google Fonts for that romantic look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+
+    <!-- Link to your CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Screen 1: The Intro -->
+    <div id="intro-screen" class="card">
+        <h1>For My Wife</h1>
+        <p>I have a little surprise for you...</p>
+        <button id="reveal-btn" class="heart-btn" aria-label="Open Surprise">❤️</button>
+        <p class="hint-text">(Tap the heart)</p>
+    </div>
+
+    <!-- Screen 2: The Letter (Hidden initially) -->
+    <div id="message-screen" class="card hide">
+        <!-- Spotify Header -->
+        <div class="player-header">
+            <span>PLAYING FROM YOUR HEART</span>
+        </div>
+
+        <!-- Album Art -->
+        <div class="album-art">
+            <img src="public/us.jpeg" alt="Us">
+        </div>
+
+        <!-- Song Info -->
+        <div class="song-info">
+            <h2>Your Beautiful Voice</h2>
+            <p>My Favorite Song</p>
+        </div>
+
+        <!-- Progress Bar -->
+        <div class="progress-area">
+            <input type="range" id="progress-bar" value="0" min="0" max="100" step="0.1">
+            <div class="time-stamps">
+                <span id="current-time">0:00</span>
+                <span id="duration">0:00</span>
+            </div>
+        </div>
+
+        <!-- Controls -->
+        <div class="controls">
+            <button id="prev-btn" class="control-btn">⏮️</button>
+            <button id="play-btn" class="play-btn">▶️</button>
+            <button id="next-btn" class="control-btn">⏭️</button>
+        </div>
+
+        <!-- Audio Source: Make sure to add song.mp3 to your public folder! -->
+        <audio id="audio-player" src="public/song.mp3"></audio>
+    </div>
+
+    <!-- Link to your JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>

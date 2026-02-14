@@ -1,0 +1,241 @@
+:root {
+    --primary-color: #ff4d6d;
+    --bg-gradient: linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
+    --glass-bg: rgba(255, 255, 255, 0.35);
+    --glass-border: rgba(255, 255, 255, 0.6);
+    --text-color: #590d22;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--bg-gradient);
+    /* 100dvh is critical for mobile browsers to handle the address bar correctly */
+    height: 100dvh; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Prevents background scrolling */
+    color: var(--text-color);
+}
+
+/* The Glass Card */
+.card {
+    position: relative;
+    width: 90%;
+    max-width: 400px;
+    /* Max height ensures the card fits on screen even with the keyboard or bars */
+    max-height: 90dvh;
+    overflow-y: hidden; /* No scrolling for the player view */
+    padding: 40px 25px;
+    text-align: center;
+    
+    /* Glassmorphism Effect */
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px); /* Safari support */
+    border-radius: 24px;
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+    
+    z-index: 10;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+    
+    /* Hide scrollbar for cleaner look */
+    scrollbar-width: none; 
+}
+
+.card::-webkit-scrollbar { 
+    display: none; 
+}
+
+h1 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 3.2rem;
+    margin-bottom: 15px;
+    color: #c9184a;
+    text-shadow: 2px 2px 4px rgba(255,255,255,0.5);
+}
+
+.hint-text {
+    font-size: 0.9rem; 
+    margin-top: 15px; 
+    opacity: 0.7;
+}
+
+/* The Heart Button */
+.heart-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 5.5rem;
+    color: var(--primary-color);
+    filter: drop-shadow(0 0 15px rgba(255, 77, 109, 0.4));
+    animation: heartbeat 1.5s infinite;
+    transition: transform 0.2s;
+    -webkit-tap-highlight-color: transparent; /* Removes gray tap box on iPhone */
+}
+
+.heart-btn:active {
+    transform: scale(0.9);
+}
+
+@keyframes heartbeat {
+    0% { transform: scale(1); }
+    14% { transform: scale(1.15); }
+    28% { transform: scale(1); }
+    42% { transform: scale(1.15); }
+    70% { transform: scale(1); }
+}
+
+/* --- Music Player Styles --- */
+
+.player-header {
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+    opacity: 0.8;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.album-art {
+    width: 100%;
+    aspect-ratio: 1 / 1; /* Keeps it perfectly square */
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    margin-bottom: 25px;
+}
+
+.album-art img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+}
+
+/* Song Info */
+.song-info {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.song-info h2 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+}
+
+.song-info p {
+    font-size: 1rem;
+    opacity: 0.8;
+}
+
+/* Progress Bar */
+.progress-area {
+    margin-bottom: 20px;
+}
+
+/* Custom Range Slider */
+input[type="range"] {
+    -webkit-appearance: none; /* Remove default styling */
+    appearance: none;
+    width: 100%;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 5px;
+    margin-bottom: 8px;
+    outline: none;
+    cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: var(--text-color);
+    cursor: pointer;
+    box-shadow: 0 0 5px rgba(0,0,0,0.2);
+}
+
+.time-stamps {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* Controls */
+.controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+.control-btn {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+.play-btn {
+    background: var(--text-color);
+    color: #fff;
+    border: none;
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    transition: transform 0.2s;
+}
+
+.play-btn:active {
+    transform: scale(0.95);
+}
+
+/* Visibility Utilities */
+.hide {
+    display: none !important;
+}
+
+.show {
+    display: block !important;
+    animation: fadeIn 0.8s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Confetti Hearts */
+.confetti {
+    position: fixed;
+    top: -20px;
+    z-index: 100; /* Above everything */
+    font-size: 1.5rem;
+    animation: fall linear forwards;
+    pointer-events: none; /* Allows clicking through the falling hearts */
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(110dvh) rotate(720deg);
+    }
+}
