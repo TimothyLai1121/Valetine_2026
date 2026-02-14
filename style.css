@@ -32,7 +32,7 @@ body {
     /* Max height ensures the card fits on screen even with the keyboard or bars */
     max-height: 90dvh;
     overflow-y: hidden; /* No scrolling for the player view */
-    padding: 40px 25px;
+    padding: 40px 15px;
     text-align: center;
     
     /* Glassmorphism Effect */
@@ -178,7 +178,8 @@ input[type="range"]::-webkit-slider-thumb {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 30px;
+    gap: 15px;
+    width: 100%;
 }
 
 .control-btn {
@@ -193,8 +194,8 @@ input[type="range"]::-webkit-slider-thumb {
     background: var(--text-color);
     color: #fff;
     border: none;
-    width: 65px;
-    height: 65px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
     font-size: 2rem;
     display: flex;
